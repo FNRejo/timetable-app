@@ -51,6 +51,9 @@ python parser/tests/test_parser.py                       # тест
 python parser/fetch_and_build.py                         # с сайта
 python parser/fetch_and_build.py --pdf some.pdf          # из файла
 python parser/timetable_parser.py some.pdf ВИП-408       # просто вывести JSON
+python parser/view.py                                    # пары в консоли (см. --help)
+python parser/debug_html.py                              # сверка с PDF в браузере (свежий PDF с сайта)
+python parser/debug_html.py --pdf some.pdf               # то же для локального файла
 ```
 
 ## Формат `vip-408.json`
@@ -65,9 +68,10 @@ python parser/timetable_parser.py some.pdf ВИП-408       # просто вы�
   "bells": { "1": {"start": "08:00", "end": "09:30"}, ... },
   "holidays": ["2026-11-04"],
   "range": {"from": "2026-09-01", "to": "2026-12-26"},
+  "week_by_date": {"2026-09-01": 1, ...},  // 1-я/2-я неделя для каждого учебного дня
   "lessons": [
     {
-      "date": "2026-10-27", "pair": 3, "start": "11:20", "end": "12:50",
+      "date": "2026-10-27", "week": 1, "pair": 3, "start": "11:20", "end": "12:50",
       "subject": "Индустр.разраб.прогр.прод.", "teacher": "Абрамова", "room": "1-306",
       "type": "lecture",            // lecture | practice | lab | null
       "changed": true,              // жёлтая заливка в PDF

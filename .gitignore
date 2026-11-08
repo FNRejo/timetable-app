@@ -5,3 +5,4 @@ __pycache__/
 build/
 local.properties
 *.apk
+debug/
